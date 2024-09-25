@@ -1,0 +1,14 @@
+# tree-sitter-goasm project gitattributes file
+#  https://github.com/github-linguist/linguist/blob/main/docs/overrides.md
+
+* text=auto eol=lf
+
+src/*.json        linguist-generated
+src/parser.c      linguist-generated
+src/tree_sitter/* linguist-generated
+
+binding.gyp       linguist-generated
+bindings/**       linguist-generated
+Makefile          linguist-generated
+Package.swift     linguist-generated
+setup.py          linguist-generated
