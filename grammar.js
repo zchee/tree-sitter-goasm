@@ -58,6 +58,8 @@ module.exports = grammar({
       choice(
         seq(
           optional(seq(choice('TEXT ·', 'byte', 'word', 'dword', 'qword'), 'ptr')),
+          '·',
+          $.word,
           '[',
           $.reg,
           optional(seq(choice('+', '-', '·'), choice($.int, $.ident))),
@@ -108,16 +110,16 @@ module.exports = grammar({
           prec.left(
             p,
             seq(field('lhs', $._tc_expr), field('op', op), field('rhs', $._tc_expr)),
-          )
+          ),
         ),
       ),
 
     int: $ => {
-      const _int = /-?([0-9][0-9_]*|(0x|\$)[0-9A-Fa-f][0-9A-Fa-f_]*|0b[01][01_]*)/
+      const _int = /-?([0-9][0-9_]*|(0x|\$)[0-9A-Fa-f][0-9A-Fa-f_]*|0b[01][01_]*)/;
       return choice(
         seq('#', token.immediate(_int)),
         _int,
-      )
+      );
     },
     float: $ => /-?[0-9][0-9_]*\.([0-9][0-9_]*)?/,
     string: $ => /"[^"]*"/,
@@ -142,8 +144,18 @@ module.exports = grammar({
         '/',
       )),
   },
-})
+});
 
-function sep(separator, rule) {
-  return optional(seq(rule, repeat(seq(separator, rule)), optional(separator)))
+/**
+ * Creates a rule to match one or more occurrences of `rule` separated by `sep`
+ *
+ * @param {RuleOrLiteral} rule
+ *
+ * @param {RuleOrLiteral} separator
+ *
+ * @return {SeqRule}
+ *
+ */
+function sep(rule, separator) {
+  return optional(seq(rule, repeat(seq(separator, rule)), optional(separator)));
 }
