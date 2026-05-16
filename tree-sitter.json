@@ -5,6 +5,7 @@
       "name": "goasm",
       "camelcase": "GoASM",
       "title": "Go Assembly",
+      "path": ".",
       "scope": "source.goasm",
       "file-types": [
         "goasm"
