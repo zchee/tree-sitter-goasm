@@ -11,7 +11,10 @@
         "goasm"
       ],
       "injection-regex": "^goasm$",
-      "class-name": "TreeSitterGoasm"
+      "class-name": "TreeSitterGoasm",
+      "highlights": "queries/highlights.scm",
+      "injections": "queries/injections.scm",
+      "tags": "queries/tags.scm"
     }
   ],
   "metadata": {
