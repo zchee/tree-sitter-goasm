@@ -13,6 +13,14 @@
 
 (comment) @comment @spell
 
+; Go toolchain build pragmas embedded in line comments — `//go:build`,
+; `//go:generate`, `//go:cgo_*`, `//go:linkname`, `//go:nosplit`, etc. The
+; grammar tokenizes the whole line as `(comment)`, so override at the query
+; level. `//line` is a Plan-9 preprocessor pragma in its own right but also
+; appears in comment form in some files.
+((comment) @keyword.directive
+  (#match? @keyword.directive "^//(go:[a-z_]+|line[: ])"))
+
 ; ----------------------------------------------------------------------------
 ; Preprocessor (#include / #define / #ifdef ...)
 ; ----------------------------------------------------------------------------
