@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // .tool_response.filePath // empty' | { read -r f; if [ \"$(basename \"$f\" 2>/dev/null)\" = \"grammar.js\" ] && [ -f \"$f\" ]; then cd \"$(dirname \"$f\")\" && tree-sitter generate --no-parser grammar.js; fi; } 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}
