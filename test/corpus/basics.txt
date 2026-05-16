@@ -1,0 +1,25 @@
+================================================================================
+basic_comment_and_preprocessor
+================================================================================
+// line comment
+#include "textflag.h"
+#include "go_asm.h"
+#ifdef GOARCH_amd64
+#endif
+LABEL:
+--------------------------------------------------------------------------------
+
+(source_file
+  (comment)
+  (preprocessor_directive
+    (preprocessor_name)
+    (preprocessor_argument))
+  (preprocessor_directive
+    (preprocessor_name)
+    (preprocessor_argument))
+  (preprocessor_directive
+    (preprocessor_name)
+    (preprocessor_argument))
+  (preprocessor_directive
+    (preprocessor_name))
+  (label_definition))

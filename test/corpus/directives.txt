@@ -1,0 +1,68 @@
+================================================================================
+directive_core
+================================================================================
+TEXT ·Add(SB), NOSPLIT, $0-16
+DATA divtab<>+0x00(SB)/4, $0xf4f8fcff
+GLOBL divtab<>(SB), RODATA|NOPTR, $64
+FUNCDATA $0, go_args_stackmap(SB)
+PCDATA $0, $-2
+PCALIGN $32
+--------------------------------------------------------------------------------
+
+(source_file
+  (directive
+    (text_directive
+      (symbol_address
+        (symbol_reference)
+        (indirection
+          (pseudo_register)))
+      (flag_set
+        (identifier))
+      (text_frame
+        (frame_size
+          (number_literal))
+        (frame_size
+          (number_literal)))))
+  (directive
+    (data_directive
+      (symbol_address
+        (symbol_reference)
+        (offset
+          (expression
+            (number_literal)))
+        (indirection
+          (pseudo_register))
+        (address_width
+          (number_literal)))
+      (data_value
+        (immediate
+          (number_literal)))))
+  (directive
+    (global_directive
+      (symbol_address
+        (symbol_reference)
+        (indirection
+          (pseudo_register)))
+      (flag_set
+        (identifier)
+        (identifier))
+      (immediate
+        (number_literal))))
+  (directive
+    (funcdata_directive
+      (immediate
+        (number_literal))
+      (symbol_address
+        (symbol_reference)
+        (indirection
+          (pseudo_register)))))
+  (directive
+    (pcdata_directive
+      (immediate
+        (number_literal))
+      (immediate
+        (number_literal))))
+  (directive
+    (pcalign_directive
+      (immediate
+        (number_literal)))))

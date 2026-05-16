@@ -1,0 +1,76 @@
+================================================================================
+operand_addressing
+================================================================================
+MOVQ a-8(SP), AX
+MOVQ $-1, R1
+MOVQ x-8(SP)(AX*4), BX
+MOVD runtime·profileloop(SB), R2
+MOVW math∕rand·Int(SB), R3
+RET
+--------------------------------------------------------------------------------
+
+(source_file
+  (instruction
+    (instruction_name)
+    (operand_list
+      (operand
+        (address
+          (symbol_address
+            (symbol_reference)
+            (offset
+              (expression
+                (number_literal)))
+            (indirection
+              (pseudo_register)))))
+      (operand
+        (register))))
+  (instruction
+    (instruction_name)
+    (operand_list
+      (operand
+        (immediate
+          (number_literal)))
+      (operand
+        (register))))
+  (instruction
+    (instruction_name)
+    (operand_list
+      (operand
+        (address
+          (offset_address
+            (expression
+              (expression
+                (symbol_reference))
+              (expression
+                (number_literal)))
+            (indirection
+              (pseudo_register))
+            (address_index
+              (register)
+              (number_literal)))))
+      (operand
+        (register))))
+  (instruction
+    (instruction_name)
+    (operand_list
+      (operand
+        (address
+          (symbol_address
+            (symbol_reference)
+            (indirection
+              (pseudo_register)))))
+      (operand
+        (register))))
+  (instruction
+    (instruction_name)
+    (operand_list
+      (operand
+        (address
+          (symbol_address
+            (symbol_reference)
+            (indirection
+              (pseudo_register)))))
+      (operand
+        (register))))
+  (instruction
+    (instruction_name)))

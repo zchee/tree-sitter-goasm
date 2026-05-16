@@ -1,0 +1,126 @@
+================================================================================
+amd64_snippet
+================================================================================
+#include "textflag.h"
+#include "funcdata.h"
+
+TEXT ·Add(SB), NOSPLIT, $0-16
+    MOVQ a+0(FP), AX
+    ADDQ b+8(FP), AX
+    MOVQ AX, ret+16(FP)
+    RET
+
+DATA divtab<>+0x00(SB)/4, $0xf4f8fcff
+GLOBL divtab<>(SB), RODATA|NOPTR, $64
+FUNCDATA $0, go_args_stackmap(SB)
+PCDATA $0, $-2
+PCALIGN $32
+--------------------------------------------------------------------------------
+
+(source_file
+  (preprocessor_directive
+    (preprocessor_name)
+    (preprocessor_argument))
+  (preprocessor_directive
+    (preprocessor_name)
+    (preprocessor_argument))
+  (directive
+    (text_directive
+      (symbol_address
+        (symbol_reference)
+        (indirection
+          (pseudo_register)))
+      (flag_set
+        (identifier))
+      (text_frame
+        (frame_size
+          (number_literal))
+        (frame_size
+          (number_literal)))))
+  (instruction
+    (instruction_name)
+    (operand_list
+      (operand
+        (address
+          (symbol_address
+            (symbol_reference)
+            (offset
+              (expression
+                (number_literal)))
+            (indirection
+              (pseudo_register)))))
+      (operand
+        (register))))
+  (instruction
+    (instruction_name)
+    (operand_list
+      (operand
+        (address
+          (symbol_address
+            (symbol_reference)
+            (offset
+              (expression
+                (number_literal)))
+            (indirection
+              (pseudo_register)))))
+      (operand
+        (register))))
+  (instruction
+    (instruction_name)
+    (operand_list
+      (operand
+        (register))
+      (operand
+        (address
+          (symbol_address
+            (symbol_reference)
+            (offset
+              (expression
+                (number_literal)))
+            (indirection
+              (pseudo_register)))))))
+  (instruction
+    (instruction_name))
+  (directive
+    (data_directive
+      (symbol_address
+        (symbol_reference)
+        (offset
+          (expression
+            (number_literal)))
+        (indirection
+          (pseudo_register))
+        (address_width
+          (number_literal)))
+      (data_value
+        (immediate
+          (number_literal)))))
+  (directive
+    (global_directive
+      (symbol_address
+        (symbol_reference)
+        (indirection
+          (pseudo_register)))
+      (flag_set
+        (identifier)
+        (identifier))
+      (immediate
+        (number_literal))))
+  (directive
+    (funcdata_directive
+      (immediate
+        (number_literal))
+      (symbol_address
+        (symbol_reference)
+        (indirection
+          (pseudo_register)))))
+  (directive
+    (pcdata_directive
+      (immediate
+        (number_literal))
+      (immediate
+        (number_literal))))
+  (directive
+    (pcalign_directive
+      (immediate
+        (number_literal)))))
