@@ -53,6 +53,7 @@
     "install": "node-gyp-build",
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
+    "pretest": "CXXFLAGS=-std=c++20 pnpm rebuild tree-sitter",
     "test": "node --test bindings/node/*_test.js"
   }
 }
