@@ -1,0 +1,52 @@
+# tree-sitter-goasm project generated files to ignore
+#  If you want to ignore files created by your editor/tools,
+#  please consider a global .gitignore https://docs.github.com/en/get-started/git-basics/ignoring-files.
+#  PLEASE DO NOT open a pull request to add something created by your editor or tools
+
+# Rust artifacts
+target/
+
+# Node artifacts
+build/
+prebuilds/
+node_modules/
+
+# Swift artifacts
+.build/
+
+# Go artifacts
+_obj/
+
+# Python artifacts
+.venv/
+dist/
+*.egg-info
+*.whl
+
+# C artifacts
+*.a
+*.so
+*.so.*
+*.dylib
+*.dll
+*.pc
+*.exp
+*.lib
+
+# Zig artifacts
+.zig-cache/
+zig-cache/
+zig-out/
+
+# Example dirs
+/examples/*/
+
+# Grammar volatiles
+*.wasm
+*.obj
+*.o
+
+# Archives
+*.tar.gz
+*.tgz
+*.zip
