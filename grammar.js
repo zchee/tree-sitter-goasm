@@ -24,7 +24,7 @@ export default grammar({
     [$.symbol_address, $.expression],
   ],
 
-  extras: ($) => [
+  extras: (_) => [
     /[\t \f\v]+/,
   ],
 
@@ -39,7 +39,7 @@ export default grammar({
       $._line_ending,
     ),
 
-    _line_ending: ($) => /\r?\n/,
+    _line_ending: (_) => /\r?\n/,
 
     _statement: ($) => choice(
       $.comment,
@@ -49,7 +49,7 @@ export default grammar({
       $.instruction,
     ),
 
-    comment: ($) => choice(
+    comment: (_) => choice(
       token(/\/\/[^\n\r]*/),
       token(/\/\*([^*]|\*+[^/*])*\*+\//),
     ),
@@ -63,7 +63,7 @@ export default grammar({
       )),
     ),
 
-    preprocessor_name: ($) => choice(
+    preprocessor_name: (_) => choice(
       "include",
       "define",
       "undef",
@@ -84,7 +84,7 @@ export default grammar({
       /[^\r\n]+/,
     ),
 
-    label_definition: ($) => token(/[A-Za-z_·∕][A-Za-z0-9_·∕<>.]*:/u),
+    label_definition: (_) => token(/[A-Za-z_·∕][A-Za-z0-9_·∕<>.]*:/u),
 
     directive: ($) => choice(
       $.text_directive,
@@ -210,7 +210,7 @@ export default grammar({
       )),
     ),
 
-    instruction_name: ($) => token(/g|[A-Za-z_][A-Za-z0-9_\.]*/),
+    instruction_name: (_) => token(/g|[A-Za-z_][A-Za-z0-9_\.]*/),
 
     operand_list: ($) => seq(
       $.operand,
@@ -308,18 +308,18 @@ export default grammar({
       ),
     ),
 
-    pseudo_register: ($) => token(choice(
+    pseudo_register: (_) => token(choice(
       "SB",
       "FP",
       "SP",
       "PC",
     )),
 
-    register: ($) => token(/[A-Z][A-Z0-9]{1,3}|[A-Z]\d+/),
+    register: (_) => token(/[A-Z][A-Z0-9]{1,3}|[A-Z]\d+/),
 
-    symbol_reference: ($) => token(/[A-Za-z_·∕][A-Za-z0-9_·∕<>.]*|<>/u),
+    symbol_reference: (_) => token(/[A-Za-z_·∕][A-Za-z0-9_·∕<>.]*|<>/u),
 
-    identifier: ($) => token(/[A-Za-z_][A-Za-z0-9_·∕<>.]*/u),
+    identifier: (_) => token(/[A-Za-z_][A-Za-z0-9_·∕<>.]*/u),
 
     offset: ($) => seq(
       choice("+", "-"),
@@ -372,17 +372,17 @@ export default grammar({
       ")",
     ),
 
-    number_literal: ($) => token(choice(
+    number_literal: (_) => token(choice(
       /0[xX][0-9A-Fa-f_]+/,       // hex
       /0[bB][01_]+/,              // binary
       /0[oO][0-7_]+/,             // octal
       /[0-9][0-9_]*(\.[0-9]+)?/,  // decimal
     )),
 
-    string_literal: ($) => token(/"([^"\\]|\\.)*"/),
+    string_literal: (_) => token(/"([^"\\]|\\.)*"/),
 
-    rune_literal: ($) => token(/'([^'\\]|\\.|\\x[0-9A-Fa-f]{2})+'/),
+    rune_literal: (_) => token(/'([^'\\]|\\.|\\x[0-9A-Fa-f]{2})+'/),
 
-    _ws: ($) => /[ \t\f\v]+/,
+    _ws: (_) => /[ \t\f\v]+/,
   },
 });
