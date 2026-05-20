@@ -30,6 +30,9 @@
     "bindings/node/*",
     "queries/*",
     "src/**",
+    "lua/**",
+    "build.lua",
+    "plugin/**",
     "*.wasm"
   ],
   "dependencies": {
